@@ -3,30 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NaQui Capital SAS — Buenos Aires</title>
+<title>NaQui Capital — Buenos Aires</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#10182A;
-    --ink-2:#1B2740;
-    --paper:#ECE7D9;
-    --paper-2:#F7F4EA;
-    --brass:#AD7C3D;
-    --brass-light:#C89B5B;
-    --ledger-green:#3E5745;
-    --text-dark:#16202F;
-    --text-muted:#5C5A4D;
-    --text-on-ink:#EDE7D8;
-    --text-on-ink-muted:#9AA3B5;
-    --rule:rgba(173,124,61,0.35);
+    --paper:#F1ECDD;
+    --paper-2:#F8F5EC;
+    --paper-3:#E8E0CB;
+    --ink:#232A26;
+    --muted:#6E6A5C;
+    --indigo:#33506E;
+    --indigo-light:#4C6D8F;
+    --ochre:#B9873C;
+    --rule:rgba(35,42,38,0.14);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--paper);
-    color:var(--text-dark);
+    color:var(--ink);
     font-family:'IBM Plex Sans', sans-serif;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
@@ -49,14 +46,10 @@
     padding:0 32px;
   }
 
-  /* ---------- Seal / monogram ---------- */
-  .seal{display:block;}
-  .seal circle,.seal path,.seal line{vector-effect:non-scaling-stroke;}
-
   /* ---------- Header ---------- */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(16,24,42,0.92);
+    background:rgba(241,236,221,0.92);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--rule);
   }
@@ -64,45 +57,42 @@
     display:flex;align-items:center;justify-content:space-between;
     padding-top:18px;padding-bottom:18px;
   }
-  .brand{display:flex;align-items:center;gap:12px;color:var(--text-on-ink);}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--ink);}
   .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:17px;letter-spacing:0.01em;}
-  .brand .eyebrow{color:var(--text-on-ink-muted);}
   nav a{
-    color:var(--text-on-ink-muted);
+    color:var(--muted);
     font-family:'IBM Plex Mono',monospace;
     font-size:13px;
     margin-left:28px;
     transition:color .2s ease;
   }
-  nav a:hover{color:var(--brass-light);}
+  nav a:hover{color:var(--indigo);}
   @media(max-width:640px){ nav{display:none;} }
 
   /* ---------- Hero ---------- */
   .hero{
-    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
-    color:var(--text-on-ink);
-    padding:96px 0 88px;
+    padding:96px 0 76px;
     position:relative;
     overflow:hidden;
   }
   .hero-grid{
     display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
   }
-  @media(max-width:860px){ .hero-grid{grid-template-columns:1fr;} .hero-seal-wrap{order:-1;display:flex;justify-content:center;} }
-  .hero .eyebrow{color:var(--brass-light);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
-  .hero .eyebrow::before{content:"";width:22px;height:1px;background:var(--brass-light);display:inline-block;}
+  @media(max-width:860px){ .hero-grid{grid-template-columns:1fr;} .hero-seal-wrap{order:-1;display:flex;justify-content:center;margin-bottom:20px;} }
+  .hero .eyebrow{color:var(--indigo);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+  .hero .eyebrow::before{content:"";width:22px;height:1px;background:var(--indigo);display:inline-block;}
   .hero h1{
     font-size:clamp(34px,5vw,54px);
-    line-height:1.12;
-    color:#F7F4EA;
-    max-width:14ch;
+    line-height:1.14;
+    color:var(--ink);
+    max-width:15ch;
   }
-  .hero h1 em{font-style:italic;color:var(--brass-light);font-weight:500;}
+  .hero h1 em{font-style:italic;color:var(--ochre);font-weight:500;}
   .hero p.lede{
     margin-top:24px;
     font-size:17px;
-    color:var(--text-on-ink-muted);
-    max-width:46ch;
+    color:var(--muted);
+    max-width:48ch;
   }
   .cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
   .btn{
@@ -115,29 +105,30 @@
     transition:all .2s ease;
     border:1px solid transparent;
   }
-  .btn-primary{background:var(--brass);color:var(--ink);font-weight:500;}
-  .btn-primary:hover{background:var(--brass-light);}
-  .btn-ghost{border-color:var(--rule);color:var(--text-on-ink);}
-  .btn-ghost:hover{border-color:var(--brass-light);color:var(--brass-light);}
+  .btn-primary{background:var(--indigo);color:var(--paper-2);font-weight:500;}
+  .btn-primary:hover{background:var(--indigo-light);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ochre);color:var(--ochre);}
 
-  .hero-seal-wrap{display:flex;justify-content:flex-end;}
-  .hero-seal{width:220px;height:220px;opacity:0.95;}
+  .hero-seal-wrap{display:flex;justify-content:flex-end;align-items:center;}
+  .hero-seal{width:200px;height:200px;flex-shrink:0;}
   .hero-seal .ring-outer{stroke:var(--rule);}
-  .hero-seal .ring-inner{stroke:var(--brass-light);}
-  .hero-seal text{fill:var(--text-on-ink-muted);font-family:'IBM Plex Mono',monospace;font-size:6.5px;letter-spacing:0.2em;}
-  .hero-seal .mono{fill:#F7F4EA;font-family:'Fraunces',serif;font-size:46px;}
+  .hero-seal .ring-inner{stroke:var(--ochre);}
+  .hero-seal text{fill:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:5.6px;letter-spacing:0.1em;}
+  .hero-seal .mono{fill:var(--indigo);font-family:'Fraunces',serif;font-size:38px;}
 
-  /* Ledger marquee divider */
+  /* Ticker divider */
   .ledger-line{
-    background:var(--ink);
+    background:var(--paper-3);
     border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
     overflow:hidden;
     padding:10px 0;
   }
   .ledger-line .track{
     display:flex;gap:48px;white-space:nowrap;
     font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;
-    color:var(--text-on-ink-muted);
+    color:var(--muted);
     animation:scroll-left 34s linear infinite;
   }
   @media(prefers-reduced-motion:reduce){ .ledger-line .track{animation:none;} }
@@ -151,75 +142,72 @@
   /* ---------- Section shared ---------- */
   section{padding:88px 0;}
   .section-head{max-width:640px;margin-bottom:48px;}
-  .section-head .eyebrow{color:var(--ledger-green);margin-bottom:14px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px);color:var(--text-dark);}
+  .section-head .eyebrow{color:var(--ochre);margin-bottom:14px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);color:var(--ink);}
 
   /* ---------- Thesis ---------- */
   .thesis{background:var(--paper);}
   .thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
   @media(max-width:800px){ .thesis-grid{grid-template-columns:1fr;gap:32px;} }
-  .thesis p{color:var(--text-muted);font-size:16px;margin-bottom:16px;}
+  .thesis p{color:var(--muted);font-size:16px;margin-bottom:16px;}
   .thesis p:last-child{margin-bottom:0;}
   .thesis-figure{
     background:var(--paper-2);
-    border:1px solid rgba(16,24,42,0.09);
+    border:1px solid var(--rule);
     padding:32px;
   }
-  .thesis-figure .num{font-family:'Fraunces',serif;font-size:44px;color:var(--ledger-green);}
-  .thesis-figure .cap{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-muted);margin-top:6px;letter-spacing:0.04em;}
-  .thesis-figure hr{border:none;border-top:1px solid rgba(16,24,42,0.12);margin:22px 0;}
+  .thesis-figure .num{font-family:'Fraunces',serif;font-size:40px;color:var(--indigo);}
+  .thesis-figure .cap{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:0.04em;}
+  .thesis-figure hr{border:none;border-top:1px solid var(--rule);margin:22px 0;}
 
   /* ---------- Focus areas ---------- */
-  .focus{background:var(--paper-2);border-top:1px solid rgba(16,24,42,0.08);border-bottom:1px solid rgba(16,24,42,0.08);}
-  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(16,24,42,0.1);}
+  .focus{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);}
   @media(max-width:800px){ .focus-grid{grid-template-columns:1fr;} }
   .focus-card{
     background:var(--paper-2);
     padding:36px 32px;
     transition:background .25s ease;
   }
-  .focus-card:hover{background:#FCFAF3;}
+  .focus-card:hover{background:var(--paper);}
   .focus-card .mark{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--brass);
-    border:1px solid var(--brass);
-    width:28px;height:28px;display:flex;align-items:center;justify-content:center;
-    margin-bottom:20px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--indigo);
+    border:1px solid var(--indigo);
+    padding:5px 9px;display:inline-flex;align-items:center;justify-content:center;
+    margin-bottom:20px;letter-spacing:0.06em;
   }
-  .focus-card h3{font-size:19px;color:var(--text-dark);margin-bottom:10px;}
-  .focus-card p{color:var(--text-muted);font-size:14.5px;}
+  .focus-card h3{font-size:19px;color:var(--ink);margin-bottom:10px;}
+  .focus-card p{color:var(--muted);font-size:14.5px;}
 
   /* ---------- Contact ---------- */
-  .contact{
-    background:linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
-    color:var(--text-on-ink);
-  }
+  .contact{background:var(--paper-3);border-top:1px solid var(--rule);}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
   @media(max-width:800px){ .contact-grid{grid-template-columns:1fr;gap:40px;} }
-  .contact h2{color:#F7F4EA;font-size:clamp(26px,3.4vw,36px);max-width:12ch;}
-  .contact .lede{color:var(--text-on-ink-muted);margin-top:18px;max-width:40ch;}
+  .contact h2{color:var(--ink);font-size:clamp(26px,3.4vw,36px);max-width:12ch;}
+  .contact .lede{color:var(--muted);margin-top:18px;max-width:40ch;}
   .sig-card{
+    background:var(--paper-2);
     border:1px solid var(--rule);
     padding:28px 30px;
     font-family:'IBM Plex Mono',monospace;
     font-size:13.5px;
-    color:var(--text-on-ink-muted);
+    color:var(--muted);
     line-height:1.9;
   }
-  .sig-card .name{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:#F7F4EA;font-style:normal;display:block;margin-bottom:2px;}
-  .sig-card .role{color:var(--brass-light);display:block;margin-bottom:14px;}
-  .sig-card a{color:var(--text-on-ink);border-bottom:1px solid var(--rule);}
-  .sig-card a:hover{color:var(--brass-light);border-color:var(--brass-light);}
+  .sig-card .lead{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--ink);font-style:normal;display:block;margin-bottom:14px;}
+  .sig-card a{color:var(--indigo);border-bottom:1px solid var(--rule);}
+  .sig-card a:hover{color:var(--ochre);border-color:var(--ochre);}
   .sig-card .row{display:block;margin-bottom:4px;}
 
   footer{
-    background:var(--ink);
+    background:var(--paper-3);
     border-top:1px solid var(--rule);
     padding:26px 0;
   }
   footer .container{
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
     font-family:'IBM Plex Mono',monospace;font-size:11.5px;
-    color:var(--text-on-ink-muted);
+    color:var(--muted);
   }
 </style>
 </head>
@@ -229,14 +217,14 @@
   <div class="container">
     <div class="brand">
       <svg width="26" height="26" viewBox="0 0 100 100" class="seal" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="#AD7C3D" stroke-width="2"/>
-        <text x="50" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="42" fill="#EDE7D8">N</text>
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#33506E" stroke-width="2"/>
+        <text x="50" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="#232A26">NQ</text>
       </svg>
       <span>NaQui Capital</span>
     </div>
     <nav>
-      <a href="#tesis">Tesis</a>
-      <a href="#areas">Áreas</a>
+      <a href="#como-trabajamos">Cómo trabajamos</a>
+      <a href="#areas">Qué hacemos</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </div>
@@ -245,21 +233,21 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <p class="eyebrow">NaQui Capital SAS — Buenos Aires, Argentina</p>
-      <h1>El capital bien administrado <em>no improvisa.</em></h1>
-      <p class="lede">Somos una firma de gestión de capital con sede en Buenos Aires, enfocada en inversión directa, financiamiento de comercio exterior y relaciones de largo plazo con nuestros socios y proveedores.</p>
+      <p class="eyebrow">NaQui Capital — Buenos Aires, Argentina</p>
+      <h1>Stock propio. Pedidos a medida. <em>Entrega directa.</em></h1>
+      <p class="lede">Importamos productos de Asia y los distribuimos en Argentina, al por mayor y al por menor. Trabajamos con stock disponible y también a pedido, con entrega directa a tu casa, tu local o tu comercio.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#" id="schedule-link">Agendar una llamada</a>
-        <a class="btn btn-ghost" href="mailto:info@naquicapital.ar">Escribinos</a>
+        <a class="btn btn-primary" href="mailto:info@naquicapital.ar">Hacer un pedido</a>
+        <a class="btn btn-ghost" href="#" id="schedule-link">Agendar una llamada</a>
       </div>
     </div>
     <div class="hero-seal-wrap">
       <svg class="hero-seal" viewBox="0 0 200 200" aria-hidden="true">
         <circle class="ring-outer" cx="100" cy="100" r="92" fill="none" stroke-width="1"/>
         <circle class="ring-inner" cx="100" cy="100" r="78" fill="none" stroke-width="1"/>
-        <text x="100" y="40" text-anchor="middle">NAQUI CAPITAL SAS</text>
-        <text x="100" y="168" text-anchor="middle">BUENOS · AIRES · ARG</text>
-        <text x="100" y="118" text-anchor="middle" class="mono">N</text>
+        <text x="100" y="42" text-anchor="middle">NAQUI CAPITAL</text>
+        <text x="100" y="163" text-anchor="middle">BUENOS AIRES · ARG</text>
+        <text x="100" y="115" text-anchor="middle" class="mono">NQ</text>
       </svg>
     </div>
   </div>
@@ -267,34 +255,36 @@
 
 <div class="ledger-line" aria-hidden="true">
   <div class="track">
-    <span>INVERSIÓN DIRECTA</span><span>·</span>
-    <span>FINANCIAMIENTO DE COMERCIO EXTERIOR</span><span>·</span>
-    <span>ASESORÍA ESTRATÉGICA</span><span>·</span>
-    <span>BUENOS AIRES — SHANGHÁI</span><span>·</span>
-    <span>INVERSIÓN DIRECTA</span><span>·</span>
-    <span>FINANCIAMIENTO DE COMERCIO EXTERIOR</span><span>·</span>
-    <span>ASESORÍA ESTRATÉGICA</span><span>·</span>
-    <span>BUENOS AIRES — SHANGHÁI</span><span>·</span>
+    <span>STOCK PROPIO</span><span>·</span>
+    <span>IMPORTACIÓN DIRECTA DE ASIA</span><span>·</span>
+    <span>VENTA MAYORISTA Y MINORISTA</span><span>·</span>
+    <span>ENTREGA A DOMICILIO Y COMERCIOS</span><span>·</span>
+    <span>PEDIDOS A MEDIDA</span><span>·</span>
+    <span>STOCK PROPIO</span><span>·</span>
+    <span>IMPORTACIÓN DIRECTA DE ASIA</span><span>·</span>
+    <span>VENTA MAYORISTA Y MINORISTA</span><span>·</span>
+    <span>ENTREGA A DOMICILIO Y COMERCIOS</span><span>·</span>
+    <span>PEDIDOS A MEDIDA</span><span>·</span>
   </div>
 </div>
 
-<section class="thesis" id="tesis">
+<section class="thesis" id="como-trabajamos">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Nuestra tesis</p>
-      <h2>Método antes que apuro.</h2>
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Del proveedor a tu puerta.</h2>
     </div>
     <div class="thesis-grid">
       <div class="reveal">
-        <p>Operamos en un contexto donde el capital argentino exige criterio: tipo de cambio volátil, ciclos cortos y contrapartes internacionales que necesitan previsibilidad. Nuestro trabajo es traducir esa complejidad en decisiones simples y sostenibles.</p>
-        <p>Construimos cada posición como se lleva un libro mayor — con trazabilidad, disciplina y relaciones que se sostienen en el tiempo, no en el ciclo. Eso vale tanto para una inversión directa como para un proveedor al otro lado del mundo.</p>
+        <p>Trabajamos directo con proveedores en Asia para traer productos a Argentina, sin intermediarios de más. Tenemos stock propio disponible para entrega inmediata, y también armamos pedidos a medida cuando necesitás algo específico o en volumen.</p>
+        <p>Vendemos tanto a clientes finales como a comercios: si sos una persona que compra para su casa o un negocio que compra para revender, te entregamos donde lo necesites — a domicilio, en tu local o en tu depósito.</p>
       </div>
       <div class="thesis-figure reveal">
-        <div class="num">2025</div>
-        <div class="cap">AÑO DE CONSTITUCIÓN</div>
+        <div class="num">B2C / B2B</div>
+        <div class="cap">VENDEMOS A PERSONAS Y A COMERCIOS</div>
         <hr>
-        <div class="num">AR / CN</div>
-        <div class="cap">CORREDOR PRINCIPAL DE OPERACIONES</div>
+        <div class="num">AR · CN</div>
+        <div class="cap">CORREDOR PRINCIPAL DE IMPORTACIÓN</div>
       </div>
     </div>
   </div>
@@ -303,25 +293,25 @@
 <section class="focus" id="areas">
   <div class="container" style="padding-top:88px;padding-bottom:88px;">
     <div class="section-head reveal">
-      <p class="eyebrow">Áreas de trabajo</p>
-      <h2>Tres formas de desplegar capital.</h2>
+      <p class="eyebrow">Qué hacemos</p>
+      <h2>Tres formas de conseguir tu producto.</h2>
     </div>
   </div>
   <div class="focus-grid">
     <div class="focus-card reveal">
-      <div class="mark">01</div>
-      <h3>Inversión directa</h3>
-      <p>Posiciones de capital en negocios con flujo de caja probado y necesidad de capital de trabajo para escalar.</p>
+      <div class="mark">B2C</div>
+      <h3>Venta al por menor</h3>
+      <p>Comprás para vos o tu casa. Entrega directa a domicilio de productos que ya tenemos en stock.</p>
     </div>
     <div class="focus-card reveal">
-      <div class="mark">02</div>
-      <h3>Comercio exterior</h3>
-      <p>Estructuración y financiamiento de operaciones de importación, con foco en proveedores de Asia y logística de cobro.</p>
+      <div class="mark">B2B</div>
+      <h3>Venta al por mayor</h3>
+      <p>Sos un comercio o revendedor. Volúmenes mayoristas con entrega en tu local o depósito.</p>
     </div>
     <div class="focus-card reveal">
-      <div class="mark">03</div>
-      <h3>Asesoría estratégica</h3>
-      <p>Acompañamiento a equipos fundadores en estructura financiera, gobernanza y preparación para nuevas rondas.</p>
+      <div class="mark">A MEDIDA</div>
+      <h3>Pedidos a medida</h3>
+      <p>Necesitás algo puntual que no tenemos en stock. Lo importamos a pedido desde nuestros proveedores en Asia.</p>
     </div>
   </div>
 </section>
@@ -329,13 +319,12 @@
 <section class="contact" id="contacto">
   <div class="container contact-grid">
     <div class="reveal">
-      <p class="eyebrow" style="color:var(--brass-light);">Hablemos</p>
-      <h2>Coordinemos una primera llamada.</h2>
-      <p class="lede">Contanos qué estás construyendo o qué necesitás financiar. Respondemos siempre desde Buenos Aires.</p>
+      <p class="eyebrow" style="color:var(--indigo);">Hablemos</p>
+      <h2>Contanos qué necesitás.</h2>
+      <p class="lede">Para tu casa, tu local o tu negocio — con stock disponible o a pedido. Respondemos siempre desde Buenos Aires.</p>
     </div>
     <div class="sig-card reveal">
-      <span class="name">[Tu nombre]</span>
-      <span class="role">Co-Founder — NaQui Capital SAS</span>
+      <span class="lead">NaQui Capital</span>
       <span class="row"><a href="mailto:info@naquicapital.ar">info@naquicapital.ar</a></span>
       <span class="row"><a href="#" id="schedule-link-2">📅 Agendar una llamada</a></span>
       <span class="row"><a href="https://naquicapital.ar">naquicapital.ar</a></span>
@@ -346,7 +335,7 @@
 
 <footer>
   <div class="container">
-    <span>© 2026 NaQui Capital SAS — Buenos Aires, Argentina</span>
+    <span>© 2026 NaQui Capital — Buenos Aires, Argentina</span>
     <span>Todos los derechos reservados</span>
   </div>
 </footer>
@@ -363,8 +352,6 @@
     items.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Placeholder scheduling links — replace href with your real Google Calendar
-  // appointment scheduling link once created.
   document.querySelectorAll('#schedule-link, #schedule-link-2').forEach(a => {
     a.href = 'https://calendar.app.google/WJGJtTHWqmQKy5tNA';
   });
