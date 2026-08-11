@@ -166,7 +166,7 @@
   .category-chip{border:1px solid var(--rule);background:transparent;color:var(--muted);padding:9px 13px;white-space:nowrap;font:12px 'IBM Plex Mono',monospace;cursor:pointer;}
   .category-chip.is-active,.category-chip:hover{background:var(--indigo);border-color:var(--indigo);color:var(--paper-2);}
   .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-  .product-card{background:#fffdf7;border:1px solid var(--rule);display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;}
+  .product-card{background:#fffdf7;border:1px solid var(--rule);display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;}
   .product-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(35,42,38,.09);}
   .product-image{aspect-ratio:1/1;background:var(--paper-3);overflow:hidden;position:relative;}
   .product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease;}
@@ -180,6 +180,7 @@
   .minimum{font-size:11px;color:var(--muted);}
   .add-btn{width:100%;border:0;background:var(--ink);color:var(--paper-2);padding:11px;margin-top:14px;font:12px 'IBM Plex Mono',monospace;cursor:pointer;}
   .add-btn:hover{background:var(--indigo);}
+  .view-detail{margin-top:10px;font:11px 'IBM Plex Mono',monospace;color:var(--indigo);display:flex;justify-content:space-between;align-items:center;}
   @media(max-width:920px){.product-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-info{padding:12px}.product-card h3{font-size:15px}.price{font-size:18px}.minimum{display:none}.shop-head{align-items:start;flex-direction:column}.demo-pill{white-space:normal}}
 
@@ -189,6 +190,29 @@
   .overlay.is-open{opacity:1;visibility:visible;}
   .cart-drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;}
   .overlay.is-open .cart-drawer{transform:translateX(0);}
+  .product-drawer{position:absolute;right:0;top:0;height:100%;width:min(560px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;overflow:auto;}
+  .overlay.product-mode .cart-drawer{display:none;}
+  .overlay.product-mode .product-drawer{transform:translateX(0);}
+  .product-detail-image{aspect-ratio:1.35/1;background:#f7f2e8;border-bottom:1px solid var(--rule);}
+  .product-detail-image img{width:100%;height:100%;object-fit:cover;display:block;}
+  .product-detail-body{padding:25px;}
+  .product-detail-body h2{font-size:30px;line-height:1.15;margin:6px 0 10px;}
+  .product-detail-copy{color:var(--muted);font-size:14.5px;margin-bottom:20px;}
+  .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin-bottom:22px;}
+  .spec{padding:12px;border-right:1px solid var(--rule);}
+  .spec:last-child{border-right:0;}
+  .spec span{display:block;font:9px 'IBM Plex Mono',monospace;color:var(--muted);letter-spacing:.06em;margin-bottom:4px;}
+  .spec strong{font-size:12.5px;line-height:1.25;display:block;}
+  .deal-title{font:11px 'IBM Plex Mono',monospace;color:var(--muted);letter-spacing:.05em;margin-bottom:9px;}
+  .deal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .deal-box{border:1px solid var(--rule);background:#fffdf7;padding:12px;text-align:left;cursor:pointer;color:var(--ink);}
+  .deal-box:hover{border-color:var(--indigo);background:rgba(51,80,110,.06);}
+  .deal-box span{display:block;font:10px 'IBM Plex Mono',monospace;color:var(--muted);margin-bottom:3px;}
+  .deal-box strong{font:18px 'Fraunces',serif;color:var(--indigo);display:block;}
+  .deal-box small{font-size:10px;color:var(--muted);}
+  .detail-shipping{margin:17px 0 0;padding:11px 12px;background:var(--paper-3);font-size:12.5px;color:var(--muted);}
+  .detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px;}
+  .detail-actions .btn{justify-content:center;}
   .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:24px;border-bottom:1px solid var(--rule);}
   .drawer-head h2{font-size:25px;}
   .icon-btn{width:38px;height:38px;background:transparent;border:1px solid var(--rule);font-size:23px;color:var(--ink);cursor:pointer;}
@@ -203,12 +227,17 @@
   .qty-control span{min-width:24px;text-align:center;font:11px 'IBM Plex Mono',monospace;}
   .remove-item{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:18px;}
   .drawer-foot{padding:20px 24px 24px;border-top:1px solid var(--rule);background:var(--paper-3);}
+  .shipping-progress{margin-bottom:15px;}
+  .shipping-progress p{font-size:11.5px;color:var(--muted);margin-bottom:7px;}
+  .shipping-track{height:5px;background:rgba(35,42,38,.12);overflow:hidden;}
+  .shipping-fill{height:100%;background:var(--ochre);width:0;transition:width .25s ease;}
   .cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
   .cart-total span{font:11px 'IBM Plex Mono',monospace;color:var(--muted);}
   .cart-total strong{font:26px 'Fraunces',serif;color:var(--indigo);}
   .checkout-btn{width:100%;justify-content:center;border:0;}
   .checkout-modal{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-47%);width:min(760px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:var(--paper-2);opacity:0;transition:.2s ease;}
   .overlay.checkout-mode .cart-drawer{display:none;}
+  .overlay.checkout-mode .product-drawer{display:none;}
   .overlay.checkout-mode .checkout-modal{opacity:1;transform:translate(-50%,-50%);}
   .checkout-content{padding:28px;}
   .checkout-banner{background:rgba(185,135,60,.12);border:1px solid rgba(185,135,60,.35);padding:11px 13px;color:var(--muted);font-size:13px;margin-bottom:24px;}
@@ -228,7 +257,7 @@
   .success-view.is-visible{display:block;}.checkout-main.is-hidden{display:none;}
   .success-icon{width:62px;height:62px;border-radius:50%;background:var(--indigo);color:white;display:grid;place-items:center;margin:0 auto 18px;font-size:26px;}
   .success-view h3{font-size:28px}.success-view p{color:var(--muted);max-width:45ch;margin:9px auto}.order-id{display:block;font:12px 'IBM Plex Mono',monospace;color:var(--indigo);margin:18px 0;}
-  @media(max-width:700px){.checkout-grid{grid-template-columns:1fr}.checkout-content{padding:20px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.checkout-modal{width:100%;height:100%;max-height:100%;}.product-badge{font-size:8px}}
+  @media(max-width:700px){.checkout-grid{grid-template-columns:1fr}.checkout-content{padding:20px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.checkout-modal{width:100%;height:100%;max-height:100%;}.product-badge{font-size:8px}.spec-grid{grid-template-columns:1fr}.spec{border-right:0;border-bottom:1px solid var(--rule)}.spec:last-child{border-bottom:0}.deal-grid{grid-template-columns:1fr}.detail-actions{grid-template-columns:1fr}}
 
   /* ---------- Section shared ---------- */
   section{padding:88px 0;}
@@ -453,10 +482,15 @@
 </footer>
 
 <div class="overlay" id="commerce-overlay" aria-hidden="true">
+  <aside class="product-drawer" aria-labelledby="product-detail-title">
+    <div class="drawer-head"><p class="eyebrow" style="color:var(--ochre)">Detalle del producto</p><button class="icon-btn" type="button" data-close-overlay aria-label="Cerrar">×</button></div>
+    <div id="product-detail"></div>
+  </aside>
   <aside class="cart-drawer" aria-labelledby="cart-title">
     <div class="drawer-head"><h2 id="cart-title">Tu carrito</h2><button class="icon-btn" type="button" data-close-overlay aria-label="Cerrar">×</button></div>
     <div class="cart-items" id="cart-items"></div>
     <div class="drawer-foot">
+      <div class="shipping-progress"><p id="shipping-message">Envío gratis desde $50.000</p><div class="shipping-track"><div class="shipping-fill" id="shipping-fill"></div></div></div>
       <div class="cart-total"><span>TOTAL ESTIMADO</span><strong id="cart-total">$0</strong></div>
       <button class="btn btn-primary checkout-btn" type="button" id="go-checkout">Continuar al checkout →</button>
     </div>
@@ -476,7 +510,7 @@
                 <div class="field"><label for="demo-phone">TELÉFONO</label><input id="demo-phone" type="tel" autocomplete="tel" required></div>
                 <div class="field full"><label for="demo-address">DIRECCIÓN</label><input id="demo-address" autocomplete="street-address" required></div>
                 <div class="field"><label for="demo-city">LOCALIDAD</label><input id="demo-city" autocomplete="address-level2" required></div>
-                <div class="field"><label for="demo-shipping">ENVÍO</label><select id="demo-shipping"><option>Estándar · Gratis</option><option>Express · $8.900</option></select></div>
+                <div class="field"><label for="demo-shipping">ENVÍO</label><select id="demo-shipping"><option>Estándar · $6.900 (gratis desde $50.000)</option></select></div>
               </div>
             </div>
             <div class="checkout-review">
@@ -514,17 +548,19 @@
   });
 
   const products = [
-    {id:1,name:'Kit organizador de cables x10',category:'Escritorio',price:9990,moq:'Pack de 10 unidades',badge:'ALTO MARGEN',image:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'},
-    {id:2,name:'Soporte plegable para celular',category:'Escritorio',price:8990,moq:'Desde 1 unidad',badge:'MÁS VENDIDO',image:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85'},
-    {id:3,name:'Soporte regulable para notebook',category:'Escritorio',price:26990,moq:'Desde 1 unidad',badge:'TICKET MEDIO',image:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'},
-    {id:4,name:'Divisores ajustables de cajón x6',category:'Organización',price:12990,moq:'Pack de 6 unidades',badge:'PACK AHORRO',image:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=85'},
-    {id:5,name:'Bolsas organizadoras al vacío x5',category:'Organización',price:16990,moq:'Pack surtido x5',badge:'POCO VOLUMEN',image:'https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=700&q=85'},
-    {id:6,name:'Ganchos adhesivos transparentes x12',category:'Hogar',price:5990,moq:'Pack de 12 unidades',badge:'COMPRA IMPULSO',image:'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=700&q=85'},
-    {id:7,name:'Organizador bajo estante 2 niveles',category:'Hogar',price:22990,moq:'Desde 1 unidad',badge:'SIN INSTALACIÓN',image:'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=85'},
-    {id:8,name:'Rodillo quitapelusas reutilizable',category:'Limpieza',price:6990,moq:'Desde 1 unidad',badge:'REUTILIZABLE',image:'https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?auto=format&fit=crop&w=700&q=85'}
+    {id:1,name:'Kit organizador de cables x10',category:'Escritorio',price:9990,moq:'Pack de 10 unidades',badge:'ALTO MARGEN',image:'assets/products/cable-clips.jpg',description:'Diez sujetacables autoadhesivos de distintos tamaños para mantener cargadores y cables siempre ordenados y al alcance.',material:'Silicona flexible',size:'1,5 a 7 cm',weight:'140 g el pack',tiers:[[1,9990],[3,8490],[6,7490]]},
+    {id:2,name:'Soporte plegable para celular',category:'Escritorio',price:8990,moq:'Desde 1 unidad',badge:'MÁS VENDIDO',image:'assets/products/phone-stand.jpg',description:'Soporte compacto con altura y ángulo regulables. Se pliega para transportar y mantiene libre el puerto de carga.',material:'Aluminio + silicona',size:'11 × 7 × 2 cm',weight:'180 g',tiers:[[1,8990],[3,7690],[6,6890]]},
+    {id:3,name:'Soporte regulable para notebook',category:'Escritorio',price:26990,moq:'Desde 1 unidad',badge:'TICKET MEDIO',image:'assets/products/laptop-stand.jpg',description:'Eleva la pantalla para trabajar con mejor postura. Base ventilada, plegable y compatible con notebooks de hasta 17 pulgadas.',material:'Aluminio anodizado',size:'25 × 22 × 4 cm',weight:'820 g',tiers:[[1,26990],[3,23990],[6,21490]]},
+    {id:4,name:'Divisores ajustables de cajón x6',category:'Organización',price:12990,moq:'Pack de 6 unidades',badge:'PACK AHORRO',image:'assets/products/drawer-dividers.jpg',description:'Separadores extensibles que crean compartimentos sin herramientas. Las puntas antideslizantes protegen el interior del cajón.',material:'ABS + goma EVA',size:'28–44 × 7 cm',weight:'620 g el pack',tiers:[[1,12990],[3,10990],[6,9490]]},
+    {id:5,name:'Bolsas organizadoras al vacío x5',category:'Organización',price:16990,moq:'Pack surtido x5',badge:'POCO VOLUMEN',image:'assets/products/vacuum-bags.jpg',description:'Pack surtido para reducir el volumen de ropa y ropa de cama. Cierre doble y válvula compatible con aspiradora.',material:'Film PA + PE',size:'40 × 60 a 80 × 100 cm',weight:'520 g el pack',tiers:[[1,16990],[3,14490],[6,12990]]},
+    {id:6,name:'Ganchos adhesivos transparentes x12',category:'Hogar',price:5990,moq:'Pack de 12 unidades',badge:'COMPRA IMPULSO',image:'assets/products/adhesive-hooks.jpg',description:'Ganchos discretos para superficies lisas. Se colocan sin perforar y funcionan en vidrio, cerámica, metal o madera sellada.',material:'PVC + acero',size:'6 × 6 cm c/u',weight:'120 g el pack',tiers:[[1,5990],[3,4990],[6,4290]]},
+    {id:7,name:'Organizador bajo estante 2 niveles',category:'Hogar',price:22990,moq:'Desde 1 unidad',badge:'SIN INSTALACIÓN',image:'assets/products/two-tier-organizer.jpg',description:'Aprovecha el espacio vertical de alacenas, lavaderos o baños. Dos canastos removibles y estructura estable de fácil armado.',material:'Acero pintado',size:'38 × 22 × 36 cm',weight:'1,15 kg',tiers:[[1,22990],[3,19990],[6,17990]]},
+    {id:8,name:'Rodillo quitapelusas reutilizable',category:'Limpieza',price:6990,moq:'Desde 1 unidad',badge:'REUTILIZABLE',image:'assets/products/lint-roller.jpg',description:'Retira pelos, pelusas y polvo de ropa, sillones y asientos. Se enjuaga con agua y recupera su adherencia al secarse.',material:'TPR + ABS',size:'17 × 10 × 5 cm',weight:'125 g',tiers:[[1,6990],[3,5890],[6,4990]]}
   ];
   let cart = [];
+  const FREE_SHIPPING = 50000;
   const money = value => new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(value);
+  const unitPrice = (product,qty) => product.tiers.reduce((price,tier)=>qty>=tier[0]?tier[1]:price,product.price);
   const productGrid = document.getElementById('product-grid');
   const overlay = document.getElementById('commerce-overlay');
 
@@ -532,26 +568,36 @@
     productGrid.innerHTML = products.filter(p=>category==='Todos'||p.category===category).map(p=>`
       <article class="product-card" data-category="${p.category}">
         <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="product-badge">${p.badge}</span></div>
-        <div class="product-info"><span class="product-kicker">${p.category}</span><h3>${p.name}</h3><div class="price-line"><span class="price">${money(p.price)}</span><span class="minimum">${p.moq}</span></div><button class="add-btn" type="button" data-add="${p.id}">Agregar al carrito</button></div>
+        <div class="product-info"><span class="product-kicker">${p.category}</span><h3>${p.name}</h3><div class="price-line"><span class="price">${money(p.tiers[p.tiers.length-1][1])}</span><span class="minimum">Desde 6 packs</span></div><span class="view-detail">Ver detalles <span>→</span></span><button class="add-btn" type="button" data-add="${p.id}">Agregar al carrito</button></div>
       </article>`).join('');
+  }
+  function openProduct(id){
+    const p=products.find(product=>product.id===id);
+    document.getElementById('product-detail').innerHTML=`<div class="product-detail-image"><img src="${p.image}" alt="${p.name}"></div><div class="product-detail-body"><span class="product-kicker">${p.category} · ${p.badge}</span><h2 id="product-detail-title">${p.name}</h2><p class="product-detail-copy">${p.description}</p><div class="spec-grid"><div class="spec"><span>MATERIAL</span><strong>${p.material}</strong></div><div class="spec"><span>MEDIDAS</span><strong>${p.size}</strong></div><div class="spec"><span>PESO</span><strong>${p.weight}</strong></div></div><p class="deal-title">PRECIO POR CANTIDAD</p><div class="deal-grid">${p.tiers.map((tier,index)=>`<button class="deal-box" type="button" data-deal="${p.id}" data-deal-qty="${tier[0]}"><span>${tier[0]===1?'1 pack':tier[0]+'+ packs'}</span><strong>${money(tier[1])}</strong><small>por pack${index?' · ahorrás '+Math.round((1-tier[1]/p.price)*100)+'%':''}</small></button>`).join('')}</div><p class="detail-shipping">Envío gratis en compras desde <strong>${money(FREE_SHIPPING)}</strong>.</p><div class="detail-actions"><button class="btn btn-ghost" type="button" data-product-cart>Ver carrito</button><button class="btn btn-primary" type="button" data-deal="${p.id}" data-deal-qty="1">Agregar 1 pack</button></div></div>`;
+    openOverlay('product');
   }
   function renderCart(){
     const count=cart.reduce((sum,item)=>sum+item.qty,0); document.getElementById('cart-count').textContent=count;
     const items=document.getElementById('cart-items');
     if(!cart.length){items.innerHTML='<div class="empty-cart"><p>Tu carrito está vacío.</p><small>Sumá un producto para probar el checkout.</small></div>';}
-    else items.innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `<div class="cart-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${money(p.price)}</small><div class="qty-control"><button type="button" data-qty="${p.id}" data-delta="-1">−</button><span>${item.qty}</span><button type="button" data-qty="${p.id}" data-delta="1">+</button></div></div><button class="remove-item" type="button" data-remove="${p.id}" aria-label="Eliminar">×</button></div>`}).join('');
-    document.getElementById('cart-total').textContent=money(cart.reduce((sum,item)=>sum+products.find(p=>p.id===item.id).price*item.qty,0));
+    else items.innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id),price=unitPrice(p,item.qty);return `<div class="cart-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${money(price)} c/u${item.qty>=3?' · precio por cantidad':''}</small><div class="qty-control"><button type="button" data-qty="${p.id}" data-delta="-1">−</button><span>${item.qty}</span><button type="button" data-qty="${p.id}" data-delta="1">+</button></div></div><button class="remove-item" type="button" data-remove="${p.id}" aria-label="Eliminar">×</button></div>`}).join('');
+    const total=cart.reduce((sum,item)=>{const p=products.find(product=>product.id===item.id);return sum+unitPrice(p,item.qty)*item.qty},0);
+    document.getElementById('cart-total').textContent=money(total);
+    const remaining=Math.max(0,FREE_SHIPPING-total);
+    document.getElementById('shipping-message').innerHTML=remaining?`Te faltan <strong>${money(remaining)}</strong> para envío gratis`:'<strong>¡Tenés envío gratis!</strong>';
+    document.getElementById('shipping-fill').style.width=`${Math.min(100,total/FREE_SHIPPING*100)}%`;
     document.getElementById('go-checkout').disabled=!cart.length;
   }
-  function openOverlay(mode='cart'){overlay.classList.add('is-open');overlay.classList.toggle('checkout-mode',mode==='checkout');overlay.setAttribute('aria-hidden','false');document.body.classList.add('overlay-open');}
-  function closeOverlay(){overlay.classList.remove('is-open','checkout-mode');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('overlay-open');document.getElementById('checkout-main').classList.remove('is-hidden');document.getElementById('success-view').classList.remove('is-visible');}
+  function openOverlay(mode='cart'){overlay.classList.add('is-open');overlay.classList.toggle('checkout-mode',mode==='checkout');overlay.classList.toggle('product-mode',mode==='product');overlay.setAttribute('aria-hidden','false');document.body.classList.add('overlay-open');}
+  function closeOverlay(){overlay.classList.remove('is-open','checkout-mode','product-mode');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('overlay-open');document.getElementById('checkout-main').classList.remove('is-hidden');document.getElementById('success-view').classList.remove('is-visible');}
   function updateCheckoutReview(){
-    const total=cart.reduce((sum,item)=>sum+products.find(p=>p.id===item.id).price*item.qty,0);
-    document.getElementById('checkout-review').innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `<div class="review-line"><span>${item.qty} × ${p.name}</span><strong>${money(p.price*item.qty)}</strong></div>`}).join('')+`<div class="review-line"><span>Envío estándar</span><strong>Gratis</strong></div><div class="review-line"><span>Total estimado</span><strong>${money(total)}</strong></div>`;
+    const subtotal=cart.reduce((sum,item)=>{const p=products.find(product=>product.id===item.id);return sum+unitPrice(p,item.qty)*item.qty},0),shipping=subtotal>=FREE_SHIPPING?0:6900,total=subtotal+shipping;
+    document.getElementById('checkout-review').innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id),price=unitPrice(p,item.qty);return `<div class="review-line"><span>${item.qty} × ${p.name}</span><strong>${money(price*item.qty)}</strong></div>`}).join('')+`<div class="review-line"><span>Envío estándar</span><strong>${shipping?money(shipping):'Gratis'}</strong></div><div class="review-line"><span>Total estimado</span><strong>${money(total)}</strong></div>`;
   }
   renderProducts();renderCart();
   document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-category]').forEach(b=>b.classList.remove('is-active'));button.classList.add('is-active');renderProducts(button.dataset.category);}));
-  productGrid.addEventListener('click',event=>{const button=event.target.closest('[data-add]');if(!button)return;const id=Number(button.dataset.add),found=cart.find(i=>i.id===id);found?found.qty++:cart.push({id,qty:1});renderCart();button.textContent='Agregado ✓';setTimeout(()=>button.textContent='Agregar al carrito',900);});
+  productGrid.addEventListener('click',event=>{const button=event.target.closest('[data-add]');if(button){event.stopPropagation();const id=Number(button.dataset.add),found=cart.find(i=>i.id===id);found?found.qty++:cart.push({id,qty:1});renderCart();button.textContent='Agregado ✓';setTimeout(()=>button.textContent='Agregar al carrito',900);return;}const card=event.target.closest('.product-card');if(card)openProduct(Number(card.querySelector('[data-add]').dataset.add));});
+  document.getElementById('product-detail').addEventListener('click',event=>{const deal=event.target.closest('[data-deal]');if(deal){const id=Number(deal.dataset.deal),qty=Number(deal.dataset.dealQty),found=cart.find(item=>item.id===id);found?found.qty+=qty:cart.push({id,qty});renderCart();openOverlay('cart');}if(event.target.closest('[data-product-cart]'))openOverlay('cart');});
   document.querySelector('[data-open-cart]').addEventListener('click',()=>openOverlay('cart'));
   document.querySelectorAll('[data-close-overlay]').forEach(button=>button.addEventListener('click',closeOverlay));
   document.getElementById('cart-items').addEventListener('click',event=>{const qty=event.target.closest('[data-qty]'),remove=event.target.closest('[data-remove]');if(qty){const item=cart.find(i=>i.id===Number(qty.dataset.qty));item.qty+=Number(qty.dataset.delta);if(item.qty<1)cart=cart.filter(i=>i.id!==item.id);}if(remove)cart=cart.filter(i=>i.id!==Number(remove.dataset.remove));renderCart();});
