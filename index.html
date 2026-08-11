@@ -190,7 +190,8 @@
   .overlay.is-open{opacity:1;visibility:visible;}
   .cart-drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;}
   .overlay.is-open .cart-drawer{transform:translateX(0);}
-  .product-drawer{position:absolute;right:0;top:0;height:100%;width:min(560px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;overflow:auto;}
+  .product-drawer{position:absolute;right:0;top:0;height:100%;height:100dvh;width:min(560px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+  .product-drawer > .drawer-head{position:sticky;top:0;z-index:3;background:var(--paper-2);flex:0 0 auto;}
   .overlay.product-mode .cart-drawer{display:none;}
   .overlay.product-mode .product-drawer{transform:translateX(0);}
   .product-detail-image{aspect-ratio:1.35/1;background:#f7f2e8;border-bottom:1px solid var(--rule);}
@@ -235,10 +236,10 @@
   .cart-total span{font:11px 'IBM Plex Mono',monospace;color:var(--muted);}
   .cart-total strong{font:26px 'Fraunces',serif;color:var(--indigo);}
   .checkout-btn{width:100%;justify-content:center;border:0;}
-  .checkout-modal{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-47%);width:min(760px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:var(--paper-2);opacity:0;transition:.2s ease;}
+  .checkout-modal{display:none;pointer-events:none;position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-47%);width:min(760px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:var(--paper-2);opacity:0;transition:.2s ease;}
   .overlay.checkout-mode .cart-drawer{display:none;}
   .overlay.checkout-mode .product-drawer{display:none;}
-  .overlay.checkout-mode .checkout-modal{opacity:1;transform:translate(-50%,-50%);}
+  .overlay.checkout-mode .checkout-modal{display:block;pointer-events:auto;opacity:1;transform:translate(-50%,-50%);}
   .checkout-content{padding:28px;}
   .checkout-banner{background:rgba(185,135,60,.12);border:1px solid rgba(185,135,60,.35);padding:11px 13px;color:var(--muted);font-size:13px;margin-bottom:24px;}
   .checkout-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;}
