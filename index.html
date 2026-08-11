@@ -351,19 +351,17 @@
   <div class="container">
     <div class="shop-head reveal">
       <div class="section-head">
-        <p class="eyebrow">Selección piloto</p>
-        <h2>Productos para probar el modelo.</h2>
+        <p class="eyebrow">Primera selección</p>
+        <h2>Soluciones simples que se venden todos los días.</h2>
       </div>
       <span class="demo-pill">DEMO · PRECIOS DE REFERENCIA AR</span>
     </div>
     <div class="category-row reveal" aria-label="Categorías">
       <button class="category-chip is-active" type="button" data-category="Todos">Todos</button>
-      <button class="category-chip" type="button" data-category="Tecnología">Tecnología</button>
-      <button class="category-chip" type="button" data-category="Seguridad">Seguridad</button>
+      <button class="category-chip" type="button" data-category="Organización">Organización</button>
+      <button class="category-chip" type="button" data-category="Escritorio">Escritorio</button>
       <button class="category-chip" type="button" data-category="Hogar">Hogar</button>
-      <button class="category-chip" type="button" data-category="Cocina">Cocina</button>
-      <button class="category-chip" type="button" data-category="Oficina">Oficina</button>
-      <button class="category-chip" type="button" data-category="Lifestyle">Lifestyle</button>
+      <button class="category-chip" type="button" data-category="Limpieza">Limpieza</button>
     </div>
     <div class="product-grid" id="product-grid"></div>
   </div>
@@ -503,18 +501,14 @@
   });
 
   const products = [
-    {id:1,name:'Auriculares TWS Bluetooth',category:'Tecnología',price:14990,moq:'Desde 1 unidad',badge:'MÁS PEDIDO',image:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=85'},
-    {id:2,name:'Smartwatch Sport 1.9”',category:'Tecnología',price:54990,moq:'Desde 1 unidad',badge:'TENDENCIA',image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'},
-    {id:3,name:'Power bank 10.000 mAh',category:'Tecnología',price:29990,moq:'Desde 1 unidad',badge:'CARGA RÁPIDA',image:'https://images.unsplash.com/photo-1609592424824-6d2561d15fc3?auto=format&fit=crop&w=700&q=85'},
-    {id:4,name:'Mini proyector Smart HD',category:'Tecnología',price:69990,moq:'Desde 1 unidad',badge:'TOP VENTAS',image:'https://images.unsplash.com/photo-1626379953822-baec19c3accd?auto=format&fit=crop&w=700&q=85'},
-    {id:5,name:'Cámara Wi-Fi 360°',category:'Seguridad',price:39990,moq:'Desde 1 unidad',badge:'VISIÓN NOCTURNA',image:'https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?auto=format&fit=crop&w=700&q=85'},
-    {id:6,name:'Lámpara LED recargable',category:'Hogar',price:18990,moq:'Desde 1 unidad',badge:'3 TONOS',image:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=85'},
-    {id:7,name:'Organizador modular',category:'Hogar',price:24990,moq:'Desde 1 unidad',badge:'HOGAR',image:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=85'},
-    {id:8,name:'Robot aspirador 3 en 1',category:'Hogar',price:309990,moq:'Desde 1 unidad',badge:'SMART HOME',image:'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=85'},
-    {id:9,name:'Licuadora portátil USB',category:'Cocina',price:19990,moq:'Desde 1 unidad',badge:'RECARGABLE',image:'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=85'},
-    {id:10,name:'Freidora de aire 4 L',category:'Cocina',price:119990,moq:'Desde 1 unidad',badge:'SIN ACEITE',image:'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=700&q=85'},
-    {id:11,name:'Teclado mecánico RGB',category:'Oficina',price:62990,moq:'Desde 1 unidad',badge:'GAMING',image:'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=85'},
-    {id:12,name:'Botella térmica 750 ml',category:'Lifestyle',price:22990,moq:'Desde 1 unidad',badge:'ACERO INOX',image:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=85'}
+    {id:1,name:'Kit organizador de cables x10',category:'Escritorio',price:9990,moq:'Pack de 10 unidades',badge:'ALTO MARGEN',image:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'},
+    {id:2,name:'Soporte plegable para celular',category:'Escritorio',price:8990,moq:'Desde 1 unidad',badge:'MÁS VENDIDO',image:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85'},
+    {id:3,name:'Soporte regulable para notebook',category:'Escritorio',price:26990,moq:'Desde 1 unidad',badge:'TICKET MEDIO',image:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'},
+    {id:4,name:'Divisores ajustables de cajón x6',category:'Organización',price:12990,moq:'Pack de 6 unidades',badge:'PACK AHORRO',image:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=85'},
+    {id:5,name:'Bolsas organizadoras al vacío x5',category:'Organización',price:16990,moq:'Pack surtido x5',badge:'POCO VOLUMEN',image:'https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=700&q=85'},
+    {id:6,name:'Ganchos adhesivos transparentes x12',category:'Hogar',price:5990,moq:'Pack de 12 unidades',badge:'COMPRA IMPULSO',image:'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=700&q=85'},
+    {id:7,name:'Organizador bajo estante 2 niveles',category:'Hogar',price:22990,moq:'Desde 1 unidad',badge:'SIN INSTALACIÓN',image:'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=85'},
+    {id:8,name:'Rodillo quitapelusas reutilizable',category:'Limpieza',price:6990,moq:'Desde 1 unidad',badge:'REUTILIZABLE',image:'https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?auto=format&fit=crop&w=700&q=85'}
   ];
   let cart = [];
   const money = value => new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(value);
