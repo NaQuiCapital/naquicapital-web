@@ -1,3 +1,4 @@
+/opt/homebrew/Library/Homebrew/cmd/shellenv.sh: line 18: /bin/ps: Operation not permitted
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,6 +68,8 @@
     transition:color .2s ease;
   }
   nav a:hover{color:var(--indigo);}
+  .cart-trigger{border:1px solid var(--rule);background:transparent;padding:8px 11px;margin-left:22px;font:12px 'IBM Plex Mono',monospace;color:var(--ink);cursor:pointer;}
+  .cart-trigger:hover{border-color:var(--indigo);color:var(--indigo);}
   @media(max-width:640px){ nav{display:none;} }
 
   /* ---------- Hero ---------- */
@@ -107,6 +110,7 @@
   }
   .btn-primary{background:var(--indigo);color:var(--paper-2);font-weight:500;}
   .btn-primary:hover{background:var(--indigo-light);}
+  button.btn{cursor:pointer;}
   .btn-ghost{border-color:var(--ink);color:var(--ink);}
   .btn-ghost:hover{border-color:var(--ochre);color:var(--ochre);}
 
@@ -138,6 +142,80 @@
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.is-visible{opacity:1;transform:translateY(0);}
   @media(prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  /* ---------- Pilot shop ---------- */
+  .shop{background:var(--paper-2);border-bottom:1px solid var(--rule);}
+  .shop-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px;}
+  .shop-head .section-head{margin-bottom:0;}
+  .demo-pill{font:11px 'IBM Plex Mono',monospace;color:var(--indigo);border:1px solid var(--indigo);padding:7px 10px;white-space:nowrap;}
+  .category-row{display:flex;gap:8px;overflow:auto;padding-bottom:17px;margin-bottom:20px;scrollbar-width:none;}
+  .category-row::-webkit-scrollbar{display:none;}
+  .category-chip{border:1px solid var(--rule);background:transparent;color:var(--muted);padding:9px 13px;white-space:nowrap;font:12px 'IBM Plex Mono',monospace;cursor:pointer;}
+  .category-chip.is-active,.category-chip:hover{background:var(--indigo);border-color:var(--indigo);color:var(--paper-2);}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .product-card{background:#fffdf7;border:1px solid var(--rule);display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;}
+  .product-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(35,42,38,.09);}
+  .product-image{aspect-ratio:1/1;background:var(--paper-3);overflow:hidden;position:relative;}
+  .product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease;}
+  .product-card:hover img{transform:scale(1.035);}
+  .product-badge{position:absolute;top:10px;left:10px;background:var(--paper-2);padding:5px 7px;font:10px 'IBM Plex Mono',monospace;color:var(--indigo);border:1px solid var(--rule);}
+  .product-info{padding:17px;display:flex;flex-direction:column;flex:1;}
+  .product-kicker{font:10px 'IBM Plex Mono',monospace;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;}
+  .product-card h3{font-size:18px;line-height:1.25;margin:6px 0 12px;}
+  .price-line{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:auto;}
+  .price{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--indigo);}
+  .minimum{font-size:11px;color:var(--muted);}
+  .add-btn{width:100%;border:0;background:var(--ink);color:var(--paper-2);padding:11px;margin-top:14px;font:12px 'IBM Plex Mono',monospace;cursor:pointer;}
+  .add-btn:hover{background:var(--indigo);}
+  @media(max-width:920px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-info{padding:12px}.product-card h3{font-size:15px}.price{font-size:18px}.minimum{display:none}.shop-head{align-items:start;flex-direction:column}.demo-pill{white-space:normal}}
+
+  /* ---------- Cart and checkout ---------- */
+  body.overlay-open{overflow:hidden;}
+  .overlay{position:fixed;inset:0;z-index:100;background:rgba(20,25,22,.58);opacity:0;visibility:hidden;transition:.2s ease;}
+  .overlay.is-open{opacity:1;visibility:visible;}
+  .cart-drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:var(--paper-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;}
+  .overlay.is-open .cart-drawer{transform:translateX(0);}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:24px;border-bottom:1px solid var(--rule);}
+  .drawer-head h2{font-size:25px;}
+  .icon-btn{width:38px;height:38px;background:transparent;border:1px solid var(--rule);font-size:23px;color:var(--ink);cursor:pointer;}
+  .cart-items{padding:10px 24px;overflow:auto;flex:1;}
+  .empty-cart{text-align:center;color:var(--muted);padding:68px 24px;}
+  .cart-item{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid var(--rule);align-items:center;}
+  .cart-item img{width:62px;height:62px;object-fit:cover;background:var(--paper-3);}
+  .cart-item strong{display:block;font-family:'Fraunces',serif;line-height:1.2;}
+  .cart-item small{color:var(--muted);}
+  .qty-control{display:flex;align-items:center;border:1px solid var(--rule);margin-top:7px;width:max-content;}
+  .qty-control button{border:0;background:transparent;width:28px;height:25px;cursor:pointer;color:var(--ink);}
+  .qty-control span{min-width:24px;text-align:center;font:11px 'IBM Plex Mono',monospace;}
+  .remove-item{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:18px;}
+  .drawer-foot{padding:20px 24px 24px;border-top:1px solid var(--rule);background:var(--paper-3);}
+  .cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+  .cart-total span{font:11px 'IBM Plex Mono',monospace;color:var(--muted);}
+  .cart-total strong{font:26px 'Fraunces',serif;color:var(--indigo);}
+  .checkout-btn{width:100%;justify-content:center;border:0;}
+  .checkout-modal{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-47%);width:min(760px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:var(--paper-2);opacity:0;transition:.2s ease;}
+  .overlay.checkout-mode .cart-drawer{display:none;}
+  .overlay.checkout-mode .checkout-modal{opacity:1;transform:translate(-50%,-50%);}
+  .checkout-content{padding:28px;}
+  .checkout-banner{background:rgba(185,135,60,.12);border:1px solid rgba(185,135,60,.35);padding:11px 13px;color:var(--muted);font-size:13px;margin-bottom:24px;}
+  .checkout-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;}
+  .checkout-form h3,.checkout-review h3{font-size:20px;margin-bottom:15px;}
+  .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;}.field.full{grid-column:1/-1;}
+  .field label{font:10px 'IBM Plex Mono',monospace;color:var(--muted);letter-spacing:.05em;}
+  .field input,.field select{border:1px solid var(--rule);background:#fffdf7;padding:11px 12px;color:var(--ink);font:14px 'IBM Plex Sans',sans-serif;border-radius:0;}
+  .field input:focus,.field select:focus{outline:2px solid rgba(51,80,110,.18);border-color:var(--indigo);}
+  .mini-review{background:#fffdf7;border:1px solid var(--rule);padding:16px;}
+  .review-line{display:flex;justify-content:space-between;gap:15px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:13px;}
+  .review-line:last-child{border-bottom:0;}
+  .review-line span{color:var(--muted);}.review-line strong{text-align:right;}
+  .demo-confirm{margin-top:18px;width:100%;justify-content:center;border:0;}
+  .success-view{text-align:center;padding:34px 20px 45px;display:none;}
+  .success-view.is-visible{display:block;}.checkout-main.is-hidden{display:none;}
+  .success-icon{width:62px;height:62px;border-radius:50%;background:var(--indigo);color:white;display:grid;place-items:center;margin:0 auto 18px;font-size:26px;}
+  .success-view h3{font-size:28px}.success-view p{color:var(--muted);max-width:45ch;margin:9px auto}.order-id{display:block;font:12px 'IBM Plex Mono',monospace;color:var(--indigo);margin:18px 0;}
+  @media(max-width:700px){.checkout-grid{grid-template-columns:1fr}.checkout-content{padding:20px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.checkout-modal{width:100%;height:100%;max-height:100%;}.product-badge{font-size:8px}}
 
   /* ---------- Section shared ---------- */
   section{padding:88px 0;}
@@ -226,6 +304,7 @@
       <a href="#como-trabajamos">Cómo trabajamos</a>
       <a href="#areas">Qué hacemos</a>
       <a href="#contacto">Contacto</a>
+      <button class="cart-trigger" type="button" data-open-cart>Carrito · <span id="cart-count">0</span></button>
     </nav>
   </div>
 </header>
@@ -237,7 +316,7 @@
       <h1>Stock propio. Pedidos a medida. <em>Entrega directa.</em></h1>
       <p class="lede">Importamos productos de Asia y los distribuimos en Argentina, al por mayor y al por menor. Trabajamos con stock disponible y también a pedido, con entrega directa a tu casa, tu local o tu comercio.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:info@naquicapital.ar">Hacer un pedido</a>
+        <a class="btn btn-primary" href="#productos">Ver productos</a>
         <a class="btn btn-ghost" href="#" id="schedule-link">Agendar una llamada</a>
       </div>
     </div>
@@ -267,6 +346,25 @@
     <span>PEDIDOS A MEDIDA</span><span>·</span>
   </div>
 </div>
+
+<section class="shop" id="productos">
+  <div class="container">
+    <div class="shop-head reveal">
+      <div class="section-head">
+        <p class="eyebrow">Selección piloto</p>
+        <h2>Productos para probar el modelo.</h2>
+      </div>
+      <span class="demo-pill">DEMO · COMPRA SIN COBRO REAL</span>
+    </div>
+    <div class="category-row reveal" aria-label="Categorías">
+      <button class="category-chip is-active" type="button" data-category="Todos">Todos</button>
+      <button class="category-chip" type="button" data-category="Tecnología">Tecnología</button>
+      <button class="category-chip" type="button" data-category="Hogar">Hogar</button>
+      <button class="category-chip" type="button" data-category="Lifestyle">Lifestyle</button>
+    </div>
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+</section>
 
 <section class="thesis" id="como-trabajamos">
   <div class="container">
@@ -340,6 +438,51 @@
   </div>
 </footer>
 
+<div class="overlay" id="commerce-overlay" aria-hidden="true">
+  <aside class="cart-drawer" aria-labelledby="cart-title">
+    <div class="drawer-head"><h2 id="cart-title">Tu carrito</h2><button class="icon-btn" type="button" data-close-overlay aria-label="Cerrar">×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="drawer-foot">
+      <div class="cart-total"><span>TOTAL ESTIMADO</span><strong id="cart-total">$0</strong></div>
+      <button class="btn btn-primary checkout-btn" type="button" id="go-checkout">Continuar al checkout →</button>
+    </div>
+  </aside>
+  <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <div class="drawer-head"><div><p class="eyebrow" style="color:var(--ochre)">Checkout rápido</p><h2 id="checkout-title">Finalizar pedido</h2></div><button class="icon-btn" type="button" data-close-overlay aria-label="Cerrar">×</button></div>
+    <div class="checkout-content">
+      <div class="checkout-main" id="checkout-main">
+        <div class="checkout-banner"><strong>Modo demostración.</strong> No se realizará ningún cobro ni se enviarán tus datos.</div>
+        <form id="demo-checkout-form">
+          <div class="checkout-grid">
+            <div class="checkout-form">
+              <h3>Entrega</h3>
+              <div class="field-grid">
+                <div class="field full"><label for="demo-name">NOMBRE Y APELLIDO</label><input id="demo-name" autocomplete="name" required></div>
+                <div class="field"><label for="demo-email">EMAIL</label><input id="demo-email" type="email" autocomplete="email" required></div>
+                <div class="field"><label for="demo-phone">TELÉFONO</label><input id="demo-phone" type="tel" autocomplete="tel" required></div>
+                <div class="field full"><label for="demo-address">DIRECCIÓN</label><input id="demo-address" autocomplete="street-address" required></div>
+                <div class="field"><label for="demo-city">LOCALIDAD</label><input id="demo-city" autocomplete="address-level2" required></div>
+                <div class="field"><label for="demo-shipping">ENVÍO</label><select id="demo-shipping"><option>Estándar · Gratis</option><option>Express · $8.900</option></select></div>
+              </div>
+            </div>
+            <div class="checkout-review">
+              <h3>Tu pedido</h3>
+              <div class="mini-review" id="checkout-review"></div>
+              <button class="btn btn-primary demo-confirm" type="submit">Confirmar pedido demo</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="success-view" id="success-view">
+        <div class="success-icon">✓</div><h3>Pedido de prueba confirmado</h3>
+        <p>Así verá el cliente la confirmación. En la versión real, acá recibirá su número de seguimiento y comprobante.</p>
+        <span class="order-id" id="demo-order-id"></span>
+        <button class="btn btn-primary" type="button" data-close-overlay>Volver a la tienda</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Reveal on scroll
   const items = document.querySelectorAll('.reveal');
@@ -355,6 +498,49 @@
   document.querySelectorAll('#schedule-link, #schedule-link-2').forEach(a => {
     a.href = 'https://calendar.app.google/WJGJtTHWqmQKy5tNA';
   });
+
+  const products = [
+    {id:1,name:'Auriculares TWS Pro',category:'Tecnología',price:28900,moq:'Desde 1 unidad',badge:'MÁS PEDIDO',image:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=85'},
+    {id:2,name:'Lámpara LED portátil',category:'Hogar',price:24700,moq:'Desde 2 unidades',badge:'NUEVO',image:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=85'},
+    {id:3,name:'Botella térmica 750 ml',category:'Lifestyle',price:18600,moq:'Desde 1 unidad',badge:'STOCK',image:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=85'},
+    {id:4,name:'Organizador modular',category:'Hogar',price:32900,moq:'Desde 1 unidad',badge:'HOGAR',image:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=85'}
+  ];
+  let cart = [];
+  const money = value => new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(value);
+  const productGrid = document.getElementById('product-grid');
+  const overlay = document.getElementById('commerce-overlay');
+
+  function renderProducts(category='Todos'){
+    productGrid.innerHTML = products.filter(p=>category==='Todos'||p.category===category).map(p=>`
+      <article class="product-card" data-category="${p.category}">
+        <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="product-badge">${p.badge}</span></div>
+        <div class="product-info"><span class="product-kicker">${p.category}</span><h3>${p.name}</h3><div class="price-line"><span class="price">${money(p.price)}</span><span class="minimum">${p.moq}</span></div><button class="add-btn" type="button" data-add="${p.id}">Agregar al carrito</button></div>
+      </article>`).join('');
+  }
+  function renderCart(){
+    const count=cart.reduce((sum,item)=>sum+item.qty,0); document.getElementById('cart-count').textContent=count;
+    const items=document.getElementById('cart-items');
+    if(!cart.length){items.innerHTML='<div class="empty-cart"><p>Tu carrito está vacío.</p><small>Sumá un producto para probar el checkout.</small></div>';}
+    else items.innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `<div class="cart-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${money(p.price)}</small><div class="qty-control"><button type="button" data-qty="${p.id}" data-delta="-1">−</button><span>${item.qty}</span><button type="button" data-qty="${p.id}" data-delta="1">+</button></div></div><button class="remove-item" type="button" data-remove="${p.id}" aria-label="Eliminar">×</button></div>`}).join('');
+    document.getElementById('cart-total').textContent=money(cart.reduce((sum,item)=>sum+products.find(p=>p.id===item.id).price*item.qty,0));
+    document.getElementById('go-checkout').disabled=!cart.length;
+  }
+  function openOverlay(mode='cart'){overlay.classList.add('is-open');overlay.classList.toggle('checkout-mode',mode==='checkout');overlay.setAttribute('aria-hidden','false');document.body.classList.add('overlay-open');}
+  function closeOverlay(){overlay.classList.remove('is-open','checkout-mode');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('overlay-open');document.getElementById('checkout-main').classList.remove('is-hidden');document.getElementById('success-view').classList.remove('is-visible');}
+  function updateCheckoutReview(){
+    const total=cart.reduce((sum,item)=>sum+products.find(p=>p.id===item.id).price*item.qty,0);
+    document.getElementById('checkout-review').innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `<div class="review-line"><span>${item.qty} × ${p.name}</span><strong>${money(p.price*item.qty)}</strong></div>`}).join('')+`<div class="review-line"><span>Envío estándar</span><strong>Gratis</strong></div><div class="review-line"><span>Total estimado</span><strong>${money(total)}</strong></div>`;
+  }
+  renderProducts();renderCart();
+  document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-category]').forEach(b=>b.classList.remove('is-active'));button.classList.add('is-active');renderProducts(button.dataset.category);}));
+  productGrid.addEventListener('click',event=>{const button=event.target.closest('[data-add]');if(!button)return;const id=Number(button.dataset.add),found=cart.find(i=>i.id===id);found?found.qty++:cart.push({id,qty:1});renderCart();button.textContent='Agregado ✓';setTimeout(()=>button.textContent='Agregar al carrito',900);});
+  document.querySelector('[data-open-cart]').addEventListener('click',()=>openOverlay('cart'));
+  document.querySelectorAll('[data-close-overlay]').forEach(button=>button.addEventListener('click',closeOverlay));
+  document.getElementById('cart-items').addEventListener('click',event=>{const qty=event.target.closest('[data-qty]'),remove=event.target.closest('[data-remove]');if(qty){const item=cart.find(i=>i.id===Number(qty.dataset.qty));item.qty+=Number(qty.dataset.delta);if(item.qty<1)cart=cart.filter(i=>i.id!==item.id);}if(remove)cart=cart.filter(i=>i.id!==Number(remove.dataset.remove));renderCart();});
+  document.getElementById('go-checkout').addEventListener('click',()=>{if(!cart.length)return;updateCheckoutReview();openOverlay('checkout');setTimeout(()=>document.getElementById('demo-name').focus(),150);});
+  overlay.addEventListener('click',event=>{if(event.target===overlay)closeOverlay();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&overlay.classList.contains('is-open'))closeOverlay();});
+  document.getElementById('demo-checkout-form').addEventListener('submit',event=>{event.preventDefault();if(!event.currentTarget.reportValidity())return;const order=`NQ-DEMO-${Math.floor(1000+Math.random()*9000)}`;document.getElementById('demo-order-id').textContent=`PEDIDO · ${order}`;document.getElementById('checkout-main').classList.add('is-hidden');document.getElementById('success-view').classList.add('is-visible');cart=[];renderCart();event.currentTarget.reset();});
 </script>
 
 </body>
