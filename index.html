@@ -1,4 +1,3 @@
-/opt/homebrew/Library/Homebrew/cmd/shellenv.sh: line 18: /bin/ps: Operation not permitted
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,20 +56,34 @@
   header .container{
     display:flex;align-items:center;justify-content:space-between;
     padding-top:18px;padding-bottom:18px;
+    max-width:1240px;
   }
   .brand{display:flex;align-items:center;gap:12px;color:var(--ink);}
   .brand span{font-family:'Fraunces',serif;font-weight:600;font-size:17px;letter-spacing:0.01em;}
+  nav{display:flex;align-items:center;gap:8px;}
   nav a{
-    color:var(--muted);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    margin-left:28px;
-    transition:color .2s ease;
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:12px;font-weight:600;
+    letter-spacing:.02em;
+    padding:9px 13px;
+    border:1px solid var(--rule);
+    background:var(--paper-2);
+    transition:color .2s ease,border-color .2s ease,background .2s ease;
   }
-  nav a:hover{color:var(--indigo);}
-  .cart-trigger{border:1px solid var(--rule);background:transparent;padding:8px 11px;margin-left:22px;font:12px 'IBM Plex Mono',monospace;color:var(--ink);cursor:pointer;}
-  .cart-trigger:hover{border-color:var(--indigo);color:var(--indigo);}
-  @media(max-width:640px){ nav{display:none;} }
+  nav a:hover{color:var(--indigo);border-color:var(--indigo);background:#fffdf7;}
+  .cart-trigger{
+    border:1px solid var(--indigo);background:var(--indigo);color:var(--paper-2);
+    padding:9px 13px;margin:0;
+    font:600 12px 'IBM Plex Sans',sans-serif;letter-spacing:.02em;
+    cursor:pointer;white-space:nowrap;
+  }
+  .cart-trigger:hover{background:var(--indigo-light);border-color:var(--indigo-light);color:white;}
+  @media(max-width:760px){
+    header .container{padding:13px 18px;}
+    nav a{display:none;}
+    .brand span{font-size:16px;}
+  }
 
   /* ---------- Hero ---------- */
   .hero{
